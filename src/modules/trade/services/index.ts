@@ -37,10 +37,11 @@ const checkTrade = async (data): Promise<Boolean> => {
     const pokemons1Score = trader1Pokemons.reduce(scoreCalculator, 0)
     const pokemons2Score = trader2Pokemons.reduce(scoreCalculator, 0)
 
-    if (pokemons1Score === pokemons2Score) return true
-    if (Math.max(pokemons1Score, pokemons2Score) * 0.8 >= Math.min(pokemons1Score, pokemons2Score)) return false
+    if (Math.max(pokemons1Score, pokemons2Score) * 0.8 >= Math.min(pokemons1Score, pokemons2Score)) {
+      return
+    }
   } catch (error) {
-    throw new ApiError(httpStatus[500], error)
+    throw new ApiError(error, 500)
   }
   return true
 }
