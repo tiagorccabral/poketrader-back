@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+    env_file:
+      - ./env/node.env
+      - ./env/mongo.env
+    depends_on:
+      - mongodb
+    volumes:
+      - .:/home/app
+      - node_modules:/home/app/node_modules
+    ports:
+      - '3000:3000'
+    command: ['./init.sh']
+  mongodb:
+    image: 'mongo'
+    restart: unless-stopped
+    volumes:
+      - data:/data/db
+    env_file:
+      - ./env/mongo.env
+
+volumes:
+  data:
+  node_modules:
