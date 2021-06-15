@@ -65,4 +65,4 @@ yarn dev
 
 ## Heroku API
 
-[Heroku API link](https://poketrader-2021.herokuapp.com/)
+[Heroku API link](https://poketrader-2021.herokuapp.com/health)
